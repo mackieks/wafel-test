@@ -12,6 +12,30 @@ body {
     font-family: 'Roboto', sans-serif;
 }
 
+.vignette-container {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.vignette-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  
+  /* Your transparent PNG */
+  background: url('vignette_overlay.png') no-repeat center center;
+  background-size: cover;
+  
+  /* Crucial: allows clicking through the image */
+  pointer-events: none;
+  
+  z-index: 10;
+}
+
 #credits {
     display: -webkit-box;
     -webkit-box-orient: horizontal;
