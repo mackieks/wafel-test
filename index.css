@@ -26,7 +26,8 @@ body {
     width: 100%;
     height: 100%;
     background: url('vignette_overlay.png') no-repeat center center;
-    background-size: cover;
+    /* This forces the image to stretch/squash to the container bounds */
+    background-size: 100% 100%;
     pointer-events: none;
     z-index: 10;
 }
