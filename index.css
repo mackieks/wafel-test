@@ -1,3 +1,5 @@
+@import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro); 
+
 body {
 
     margin: 0;
@@ -68,6 +70,7 @@ body {
     -webkit-box-orient: horizontal;
     -webkit-box-pack: center;
     flex-wrap: wrap;
+    font-family: "Neue Haas Grotesk Text Pro"; 
 }
 
 #credits div {
@@ -96,6 +99,7 @@ body {
     font-size: 1em;
     padding: 1em 2em;
     cursor: pointer;
+    font-family: "Neue Haas Grotesk Text Pro"; 
 }
 
 .compatWarning {
@@ -103,6 +107,7 @@ body {
     margin: 1em 0;
     padding: .625em 1em;
     border-radius: 1.5em;
+    font-family: "Neue Haas Grotesk Text Pro"; 
 }
 
 table {
