@@ -9,7 +9,7 @@ body {
     background-color: #FFF7E8;
     overflow: hidden;
     position: relative; /* Necessary for absolute centering */
-
+    font-family: "Neue Haas Grotesk Text Pro"; 
     text-align: center;
 }
 
