@@ -1,33 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-    <header>
-        <title>Wafel Installer</title>
-        <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-        <meta http-equiv="Pragma" content="no-cache" />
-        <meta http-equiv="Expires" content="0" />
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script>var exploit_page = "exploit.html";</script>
-        <script src="index.js"></script>
-        <link href="index.css" rel="stylesheet">
-    </header>
-    <body>
+<head>
+    <title>Wafel Installer</title>
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Expires" content="0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script>var exploit_page = "exploit.html";</script>
+    <script src="index.js"></script>
+    <link href="index.css" rel="stylesheet">
+</head>
+<body>
 
-        <div class="vignette-container">
-            
+    <div class="vignette-container">
         <div class="vignette-overlay"></div>
 
         <div class="logo-container">
-        <img src="wafel-logo.png" alt="Logo" class="responsive-logo">
-        </div>
+            <img src="wafel-logo.png" alt="Logo" class="responsive-logo">
+            
+            <div class="description-text">
+                <p>Welcome to the Wafel Installer. Please ensure your device is ready before proceeding.</p>
+            </div>
 
-        <button class="launchButton" type="button" onclick="checkCompatibility()">Launch Wafel Installer</button>
+            <button class="launchButton" type="button" onclick="checkCompatibility()">Launch Wafel Installer</button>
 
-        <div id="compatibility-warning" class="compatWarning" hidden>
-            <p id="compatibility-text"></p>
-            <p>You can ignore the warning by checking the checkbox and clicking the launch button again.</p>
-            <input type="checkbox" id="ignore-compatibility" name="compatibility-checkbox"> <label for="compatibility-checkbox">Ignore warning</label>
+            <div id="compatibility-warning" class="compatWarning" hidden>
+                <p id="compatibility-text"></p>
+                <p>You can ignore the warning by checking the checkbox and clicking the launch button again.</p>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="ignore-compatibility" name="compatibility-checkbox"> 
+                    <label for="ignore-compatibility">Ignore warning</label>
+                </div>
+            </div>
+            
+            <div class="footer-info">
+                <p>v1.0.0 | Developed by the Wafel Team</p>
+            </div>
         </div>
+    </div>
 
-        </div>
-    </body>
+</body>
 </html>
