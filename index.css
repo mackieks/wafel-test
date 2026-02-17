@@ -1,9 +1,13 @@
 body {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-box-align: center;
-    max-width: 90%;
-    margin: 0 auto;
+
+
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #0C0C0C;
+    overflow: hidden;
+    position: relative; /* Necessary for absolute centering */
 
     text-align: center;
     font-family: 'Roboto', sans-serif;
