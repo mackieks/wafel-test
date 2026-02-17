@@ -4,14 +4,6 @@ function setWarning(warningText) {
 }
 
 function launchExploit() {
-    // Request URL so that fetch is cached whenever it's requested
-    try {
-        const request = new XMLHttpRequest();
-        request.open("GET", "https://dumpling.dumpling-wiiu.workers.dev", false);
-        request.send(null);
-    }
-    catch (exc) {
-    }
     // Go to exploit page
     var paths = window.location.pathname.split("/");
     if (paths[paths.length-1].substring(0, 6) == "index." || paths[paths.length-1] == "") {
@@ -43,17 +35,17 @@ function checkCompatibility() {
             // Not using a user agent that would indicate the system firmware is on 5.5.0 - 5.5.2
             const commitVersion = parseInt(userAgentDetails[3]);
             if (commitVersion < 11224) {
-                return setWarning("You seem to be using an outdated Wii U firmware version. This launcher is only for 5.5.0 - 5.5.2, so try seeing if you can update to that.");
+                return setWarning("Your Wii U's firmware is outdated. This launcher is only for 5.5.0 - 5.5.6");
             }
-            else if (commitVersion > 11274) {
-                return setWarning("You seem to be using a Wii U firmware version that's newer then the versions that are confirmed to be working with this launcher, which are 5.5.0 - 5.5.2.\n");
-            }
+            // else if (commitVersion > 11274) {
+            //     return setWarning("You seem to be using a Wii U firmware version that's newer then the versions that are confirmed to be working with this launcher, which are 5.5.0 - 5.5.2.\n");
+            // }
             else {
-                return setWarning("Couldn't determine the Wii U firmware that you seem to be using.");
+                return setWarning("Couldn't determine your Wii U's firmware version!");
             }
         }
     }
     else {
-        return setWarning("Couldn't determine whether you're using an actual Wii U. This launcher can only work on Wii U's!");
+        return setWarning("Are you using a Wii U? This launcher only works on console.");
     }
 }
