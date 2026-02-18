@@ -21,6 +21,7 @@ function launchExploit() {
     window.location.pathname = paths.join("/");
 }
 
+// rebuild
 function checkCompatibility() {
     // If we've already shown a warning, the second click launches regardless
     if (hasWarning) {
