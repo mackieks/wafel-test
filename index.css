@@ -1,4 +1,4 @@
-@import url(https://db.onlinewebfonts.com/c/736f0d333acd0b3d699307af25299352?family=Neue+Haas+Grotesk+Display+Pro);
+@import url(https://db.onlinewebfonts.com/c/f21923cb0f60b46d41a66875255790b3?family=Neue+Haas+Grotesk+Display+Pro+65+Medium); 
 @import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro); 
 
 html, body {
@@ -65,7 +65,7 @@ html, body {
     color: white;
     font-size: 2.0em;
     padding: 0.4em 0.4em;
-    font-family: "Neue Haas Grotesk Display Pro";
+    font-family: "Neue Haas Grotesk Display Pro 65 Medium";;
     transition: 0.2s ease;
     display: inline-block;
     max-width: 90%;
