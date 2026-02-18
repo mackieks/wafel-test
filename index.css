@@ -63,8 +63,8 @@ html, body {
     border-radius: 1.0em;
     background-color: #FFBF00;
     color: white;
-    font-size: 2.0em;
-    padding: 0.4em 0.4em;
+    font-size: 2.5em;
+    padding: 0.2em 0.2em 0.2em;
     font-family: "Neue Haas Grotesk Display Pro 65 Medium";;
     transition: 0.2s ease;
     display: inline-block;
