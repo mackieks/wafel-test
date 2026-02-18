@@ -1,10 +1,17 @@
 function setWarning(warningText) {
-    document.getElementById("compatibility-text").innerText = warningText;
-    document.getElementById("compatibility-warning").hidden = false;
+    var btn = document.getElementById("launch-button");
+    var btnText = document.getElementById("button-text");
+    var controls = document.getElementById("compatibility-controls");
+
+    // Update button text and look
+    btnText.innerText = warningText;
+    btn.classList.add("btn-warning");
+
+    // Show the "Ignore" checkbox
+    controls.hidden = false;
 }
 
 function launchExploit() {
-    // Go to exploit page
     var paths = window.location.pathname.split("/");
     if (paths[paths.length-1].substring(0, 6) == "index." || paths[paths.length-1] == "") {
         paths.pop();
@@ -19,33 +26,28 @@ function checkCompatibility() {
     }
 
     var userAgentDetails = navigator.userAgent.match(/\S+ \((.*?)\) .* (?:NintendoBrowser\/(\d+\.\d+\.\d+\.(\d+)\.(\w\w)))?/);
-    if (userAgentDetails.length < 2) {
-        return setWarning("Couldn't determine what device you're using.");
+    
+    if (!userAgentDetails || userAgentDetails.length < 2) {
+        return setWarning("Unknown device. Click to try anyway.");
     }
 
     if (userAgentDetails[1] == "Nintendo WiiU") {
         if (userAgentDetails.length != 5) {
-            return setWarning("Couldn't determine your Wii U's browser version!");
+            return setWarning("Unknown browser version. Try anyway?");
         }
         
-        if (userAgentDetails[2].substring(0, 5) == "4.3.2" || userAgentDetails[2].substring(0, 5) == "4.3.1" || userAgentDetails[2].substring(0, 5) == "4.3.0") {
+        var version = userAgentDetails[2].substring(0, 5);
+        if (version == "4.3.2" || version == "4.3.1" || version == "4.3.0") {
             return launchExploit();
-        }
-        else {
-            // Not using a user agent that would indicate the system firmware is on 5.5.0 - 5.5.2
+        } else {
             const commitVersion = parseInt(userAgentDetails[3]);
             if (commitVersion < 11224) {
-                return setWarning("Your Wii U's firmware is outdated. This launcher is only for 5.5.0 - 5.5.6");
-            }
-            // else if (commitVersion > 11274) {
-            //     return setWarning("You seem to be using a Wii U firmware version that's newer then the versions that are confirmed to be working with this launcher, which are 5.5.0 - 5.5.2.\n");
-            // }
-            else {
-                return setWarning("Couldn't determine your Wii U's firmware version!");
+                return setWarning("Firmware outdated (5.5.0+ required). Try anyway?");
+            } else {
+                return setWarning("Unknown firmware. Try anyway?");
             }
         }
-    }
-    else {
-        return setWarning("Are you using a Wii U? This launcher only works on console.");
+    } else {
+        return setWarning("Console not detected. Try anyway?");
     }
 }
