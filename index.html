@@ -11,7 +11,6 @@
     <link href="index.css" rel="stylesheet">
 </head>
 <body>
-
     <div class="vignette-container">
         <div class="vignette-overlay"></div>
 
@@ -19,25 +18,21 @@
             <img src="wafel-logo.png" alt="Logo" class="responsive-logo">
             
             <div class="description-text">
-                <p>Welcome to the Wafel Installer. Please ensure your device is ready before proceeding.</p>
+                <p>Welcome to the Wafel Installer.</p>
             </div>
 
-            <button class="launchButton" type="button" onclick="checkCompatibility()">Launch Wafel Installer</button>
+            <div class="action-area">
+                <button id="launch-button" class="launchButton" type="button" onclick="checkCompatibility()">
+                    <span id="button-text">Launch Wafel Installer</span>
+                </button>
 
-            <div id="compatibility-warning" class="compatWarning" hidden>
-                <p id="compatibility-text"></p>
-                <p>You can ignore the warning by checking the checkbox and clicking the launch button again.</p>
-                <div class="checkbox-wrapper">
+                <div id="compatibility-controls" hidden>
+                    <p class="small-warning">Proceed anyway? Check the box and click the button again.</p>
                     <input type="checkbox" id="ignore-compatibility" name="compatibility-checkbox"> 
                     <label for="ignore-compatibility">Ignore warning</label>
                 </div>
             </div>
-            
-            <div class="footer-info">
-                <p>v1.0.0 | Developed by the Wafel Team</p>
-            </div>
         </div>
     </div>
-
 </body>
 </html>
