@@ -1,22 +1,23 @@
+/* Import font - Note: Ensure the Wii U browser has internet access to load this */
 @import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro); 
 
-body {
+/* --- Reset & Base Styles --- */
+html, body {
     margin: 0;
     padding: 0;
     width: 100%;
     height: 100%;
     background-color: #FFF7E8;
-    overflow: hidden;
-    position: relative;
-    font-family: "Neue Haas Grotesk Text Pro", sans-serif; 
+    overflow: hidden; /* Prevents scrollbars on the Wii U GamePad */
+    font-family: "Neue Haas Grotesk Text Pro", Arial, sans-serif; 
     text-align: center;
 }
 
+/* --- Background Vignette --- */
 .vignette-container {
     position: relative;
     width: 100%;
     height: 100vh;
-    overflow: hidden;
 }
 
 .vignette-overlay {
@@ -25,23 +26,28 @@ body {
     left: 0;
     width: 100%;
     height: 100%;
-    background: url('vignette_overlay.png') no-repeat center center;
-    /* This forces the image to stretch/squash to the container bounds */
-    background-size: 100% 100%;
-    pointer-events: none;
+    
+    /* Background logic to squash and stretch to any aspect ratio */
+    background: url('vignette_overlay.png') no-repeat;
+    background-size: 100% 100%; 
+    
+    pointer-events: none; /* Allows clicks to pass through to the button */
     z-index: 10;
 }
 
-/* Updated Container: Now anchors everything to the center */
+/* --- Layout Anchor --- */
 .logo-container {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* Standard and WebKit prefixes for Wii U compatibility */
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
+    
     text-align: center;
-    width: 90%; /* Allows for padding on smaller screens */
+    width: 90%;
     max-width: 800px;
+    z-index: 20;
 }
 
 .responsive-logo {
@@ -51,52 +57,9 @@ body {
     height: auto;
     display: inline-block;
     border: none;
-    margin-bottom: 1.5em; /* Space between logo and text */
+    margin-bottom: 1em;
 }
 
 .description-text {
-    margin-bottom: 1.5em;
-    font-size: 1.1em;
-    line-height: 1.4;
-}
-
-.launchButton {
-    border: none;
-    border-radius: .5em;
-    background-color: #04AA6D;
-    color: white;
-    font-size: 1.2em;
-    padding: 1em 2em;
-    cursor: pointer;
-    font-family: "Neue Haas Grotesk Text Pro"; 
-    display: inline-block;
-}
-
-.compatWarning {
-    background-color: orange;
-    margin-top: 1.5em;
-    padding: 1em;
-    border-radius: 1.5em;
-}
-
-.checkbox-wrapper {
-    margin-top: 0.5em;
-}
-
-.footer-info {
-    margin-top: 2em;
-    font-size: 0.85em;
-    opacity: 0.7;
-}
-
-/* Unused credits/table styles kept for your reference */
-#credits {
-    display: -webkit-box;
-    -webkit-box-orient: horizontal;
-    -webkit-box-pack: center;
-    flex-wrap: wrap;
-}
-
-#credits div {
-    padding: 0 1.2em;
-}
+    margin-bottom: 2em;
+    font-size
