@@ -1,3 +1,4 @@
+@import url(https://db.onlinewebfonts.com/c/736f0d333acd0b3d699307af25299352?family=Neue+Haas+Grotesk+Display+Pro);
 @import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro); 
 
 html, body {
@@ -60,18 +61,18 @@ html, body {
 .launchButton {
     border: none;
     border-radius: .5em;
-    background-color: #04AA6D;
+    background-color: #DE9602;
     color: white;
     font-size: 1.2em;
     padding: 1.2em 2em;
     cursor: pointer;
-    font-family: inherit;
+    font-family: "Neue Haas Grotesk Display Pro";
     transition: background-color 0.2s ease;
     display: inline-block;
     max-width: 90%;
 }
 
 .btn-warning {
-    background-color: #e67e22 !important;
+    background-color: #DE9602 !important;
     font-size: 1em;
 }
