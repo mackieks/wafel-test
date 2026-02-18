@@ -1,14 +1,15 @@
+var hasWarning = false;
+
 function setWarning(warningText) {
     var btn = document.getElementById("launch-button");
     var btnText = document.getElementById("button-text");
-    var controls = document.getElementById("compatibility-controls");
 
-    // Update button text and look
+    // Update button text and color
     btnText.innerText = warningText;
     btn.classList.add("btn-warning");
-
-    // Show the "Ignore" checkbox
-    controls.hidden = false;
+    
+    // Set flag so the next click proceeds
+    hasWarning = true;
 }
 
 function launchExploit() {
@@ -21,19 +22,20 @@ function launchExploit() {
 }
 
 function checkCompatibility() {
-    if (document.getElementById("ignore-compatibility").checked) {
+    // If we've already shown a warning, the second click launches regardless
+    if (hasWarning) {
         return launchExploit();
     }
 
     var userAgentDetails = navigator.userAgent.match(/\S+ \((.*?)\) .* (?:NintendoBrowser\/(\d+\.\d+\.\d+\.(\d+)\.(\w\w)))?/);
     
     if (!userAgentDetails || userAgentDetails.length < 2) {
-        return setWarning("Unknown device. Click to try anyway.");
+        return setWarning("Unknown device. Click again to force launch.");
     }
 
     if (userAgentDetails[1] == "Nintendo WiiU") {
         if (userAgentDetails.length != 5) {
-            return setWarning("Unknown browser version. Try anyway?");
+            return setWarning("Unknown version. Click again to force launch.");
         }
         
         var version = userAgentDetails[2].substring(0, 5);
@@ -42,12 +44,12 @@ function checkCompatibility() {
         } else {
             const commitVersion = parseInt(userAgentDetails[3]);
             if (commitVersion < 11224) {
-                return setWarning("Firmware outdated (5.5.0+ required). Try anyway?");
+                return setWarning("Firmware outdated. Click again to force launch.");
             } else {
-                return setWarning("Unknown firmware. Try anyway?");
+                return setWarning("Unsupported firmware. Click again to force launch.");
             }
         }
     } else {
-        return setWarning("Console not detected. Try anyway?");
+        return setWarning("Console not detected. Click again to force launch.");
     }
 }
