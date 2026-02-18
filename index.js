@@ -51,6 +51,6 @@ function checkCompatibility() {
             }
         }
     } else {
-        return setWarning("Are you on a Wii U? Click again to force launch"");
+        return setWarning("Are you on a Wii U? Click again to force launch");
     }
 }
