@@ -74,17 +74,25 @@ html, body {
     margin-bottom: -4cqw;
 }
 
+/* Base styles for ALL browsers (Wii U fallback) */
 .description-text, .features-text, .credits-text, .warning-text {
-    width: 90%;
-    width: 300%; 
-    margin-left: auto;
-    margin-right: auto;
-    /* Cascade handles the negative margins */
-    margin-left: -25%;
-    margin-right: -25%;
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
     letter-spacing: -0.01em;
     color: #444;
     line-height: 1.4;
+    display: block;
+}
+
+/* Modern browsers only (Firefox, Chrome, etc.) */
+/* This block is ignored by the Wii U */
+@supports (container-type: inline-size) {
+    .description-text, .features-text, .credits-text, .warning-text {
+        width: 300%; 
+        margin-left: -100%; /* More stable than -25% for centering overflow */
+        margin-right: -100%;
+    }
 }
 
 .description-text {
@@ -96,7 +104,7 @@ html, body {
 
 .features-text {
     margin-top: 5px;
-    margin-top: -8cqw;
+    margin-top: -8cqw; /* Note: Wii U might ignore negative margins if they clash */
     margin-bottom: 10px;
     margin-bottom: 1cqw;
     font-size: 16px;
