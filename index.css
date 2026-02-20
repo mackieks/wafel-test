@@ -143,3 +143,11 @@ html, body {
     background-color: #FFBF00 !important;
     font-size: 1em;
 }
+
+/* Target screens where height is significantly greater than width */
+@media (max-aspect-ratio: 13/16) {
+    .logo-container {
+        /* Adjust from 55% to something higher, like 40% or 45% */
+        top: 42%; 
+    }
+}
