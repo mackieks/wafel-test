@@ -41,7 +41,7 @@ html, body {
 .logo-container {
     container-type: inline-size;
     position: absolute;
-    top: 58%;
+    top: 45%;
     left: 50%;
 
     /* 1. Wii U Centering: Uses 80% width and a -40% margin to center */
@@ -49,6 +49,7 @@ html, body {
     margin-left: -40%; 
 
     /* 2. Modern Centering: Overwrites Wii U logic */
+    top: 58%;
     width: var(--content-cluster-width);
     /* Set margin-left to 0 so it doesn't offset the transform */
     margin-left: 0; 
