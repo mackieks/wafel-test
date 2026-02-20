@@ -15,7 +15,7 @@ html, body {
     height: 100%;
     background-color: #FFF7E8;
     overflow: hidden;
-    font-family: Arial, sans-serif; /* Wii U Fallback */
+    font-family: Arial, sans-serif;
     font-family: "Neue Haas Grotesk Text Pro"; 
     text-align: center;
 }
@@ -43,17 +43,22 @@ html, body {
     position: absolute;
     top: 58%;
     left: 50%;
+
+    /* 1. Wii U Centering: Uses 80% width and a -40% margin to center */
+    width: 80%;
+    margin-left: -40%; 
+
+    /* 2. Modern Centering: Overwrites Wii U logic */
+    width: var(--content-cluster-width);
+    /* Set margin-left to 0 so it doesn't offset the transform */
+    margin-left: 0; 
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    text-align: center;
-    /* Fallbacks */
-    width: 80%;
-    width: var(--content-cluster-width);
+    
     max-width: 900px;
     max-width: var(--max-container-px);
     min-width: 280px;
     z-index: 20;
-    /* Flex logic */
     display: block; 
     display: flex;
     flex-direction: column;
@@ -61,85 +66,79 @@ html, body {
 }
 
 .responsive-logo {
+    /* 1. Wii U & General Fallback: Standard centering */
     width: 280px;
     width: var(--logo-relative-scale); 
-    min-width: 280px;
     height: auto;
-    display: inline-block;
-    border: none;
-    /* Modern positioning */
-    margin-left: 0;
-    margin-left: -2cqw;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 10px;
+    border: none;
+
+    /* 2. Modern Overwrites: Only if cqw is supported */
+    /* We use a specific margin-left that matches your original spacing 
+       but ensures it doesn't fight the auto-centering on desktop */
+    margin-left: 13cqw; 
     margin-bottom: -4cqw;
 }
 
-/* Base styles for ALL browsers (Wii U fallback) */
+/* Base Text: Contained 100% for Wii U */
 .description-text, .features-text, .credits-text, .warning-text {
     width: 100%;
     margin-left: 0;
     margin-right: 0;
-    letter-spacing: -0.01em;
     color: #444;
     line-height: 1.4;
     display: block;
 }
 
-/* Modern browsers only (Firefox, Chrome, etc.) */
-/* This block is ignored by the Wii U */
+/* Modern Text: Expanded 300% only if Container Queries are supported */
 @supports (container-type: inline-size) {
     .description-text, .features-text, .credits-text, .warning-text {
         width: 300%; 
-        margin-left: -100%; /* More stable than -25% for centering overflow */
+        margin-left: -100%;
         margin-right: -100%;
     }
 }
 
 .description-text {
+    font-size: 18px;
+    font-size: 4cqw;
     margin-bottom: 15px;
     margin-bottom: 1.5cqw;
-    font-size: 18px;
-    font-size: 4cqw; 
 }
 
 .features-text {
-    margin-top: 5px;
-    margin-top: -8cqw; /* Note: Wii U might ignore negative margins if they clash */
+    font-size: 16px;
+    font-size: 3.5cqw;
     margin-bottom: 10px;
     margin-bottom: 1cqw;
-    font-size: 16px;
-    font-size: 3.5cqw; 
+    margin-top: 0;
+    margin-top: -8cqw; 
 }
 
 .credits-text {
+    font-size: 16px;
+    font-size: 3.75cqw;
     margin-top: 15px;
     margin-top: 3cqw;
-    margin-bottom: 10px;
-    margin-bottom: 1cqw;
-    font-size: 16px;
-    font-size: 3.75cqw; 
 }
 
 .warning-text {
+    font-size: 14px;
+    font-size: 3cqw;
     margin-top: 10px;
     margin-top: 1cqw;
-    margin-bottom: 10px;
-    margin-bottom: 1cqw;
-    font-size: 14px;
-    font-size: 3cqw; 
     font-family: "Segoe UI Symbol";
 }
 
 .launchButton {
     border: none;
-    cursor: pointer;
     background-color: #FFBF00;
     color: white;
     display: inline-block;
-    width: auto;
-    width: fit-content;
-    max-width: 100%; 
-    /* Scaling Props */
+    cursor: pointer;
     border-radius: 15px;
     border-radius: 3.5cqw; 
     font-size: 24px;
@@ -148,14 +147,8 @@ html, body {
     padding: 0.75cqw 3cqw 0.8cqw 3cqw;
     font-family: Arial, sans-serif;
     font-family: "Neue Haas Grotesk Display Pro 65 Medium";
-    /* Shadows */
     box-shadow: 0px 4px 10px rgba(153,104,0,1);
     box-shadow: 0px 0px 2.5cqw 0px rgba(153,104,0,1);
-}
-
-.btn-warning {
-    background-color: #FFBF00 !important;
-    font-size: 1em;
 }
 
 @media (max-aspect-ratio: 13/16) {
