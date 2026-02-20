@@ -44,7 +44,7 @@ html, body {
     /* Define this as a container so children can scale their font based on its width */
     container-type: inline-size;
     position: absolute;
-    top: 55%;
+    top: 58%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
@@ -124,6 +124,26 @@ html, body {
     line-height: 1.4;
 }
 
+.warning-text {
+
+    /* Increase width beyond 100% to exceed the parent container's bounds */
+    width: 300%; 
+    
+    /* Ensure it stays centered even though it's wider than its parent */
+    margin-left: -25%;
+    margin-right: -25%;
+
+    letter-spacing: -0.01em;
+
+    margin-top: 1cqw;
+    margin-bottom: 1cqw;
+    /* Font size is now 4% of the container's width */
+    font-size: 3cqw; 
+    font-family: "Segoe UI Symbol";
+    color: #444;
+    line-height: 1.4;
+}
+
 .launchButton {
     border: none;
     border-radius: 3.5cqw; /* Radius now scales too */
@@ -148,6 +168,6 @@ html, body {
 @media (max-aspect-ratio: 13/16) {
     .logo-container {
         /* Adjust from 55% to something higher, like 40% or 45% */
-        top: 42%; 
+        top: 45%; 
     }
 }
