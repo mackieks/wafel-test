@@ -41,29 +41,25 @@ html, body {
 .logo-container {
     container-type: inline-size;
     position: absolute;
-    top: 45%;
+    
+    /* 1. Wii U DEFAULT POSITION */
+    /* This is the only 'top' the Wii U will ever see */
+    top: 45%; 
     left: 50%;
 
-    /* 1. Wii U Centering: Uses 80% width and a -40% margin to center */
+    /* Wii U Centering Fallback */
     width: 80%;
     margin-left: -40%; 
 
-    /* 2. Modern Centering: Overwrites Wii U logic */
-    top: 58%;
-    width: var(--content-cluster-width);
-    /* Set margin-left to 0 so it doesn't offset the transform */
-    margin-left: 0; 
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%);
-    
+    /* Standard modern props that Wii U safe-ignores or uses */
     max-width: 900px;
-    max-width: var(--max-container-px);
     min-width: 280px;
     z-index: 20;
     display: block; 
     display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
 }
 
 .responsive-logo {
@@ -92,15 +88,6 @@ html, body {
     color: #444;
     line-height: 1.4;
     display: block;
-}
-
-/* Modern Text: Expanded 300% only if Container Queries are supported */
-@supports (container-type: inline-size) {
-    .description-text, .features-text, .credits-text, .warning-text {
-        width: 300%; 
-        margin-left: -100%;
-        margin-right: -100%;
-    }
 }
 
 .description-text {
@@ -132,6 +119,26 @@ html, body {
     margin-top: 10px;
     margin-top: 1cqw;
     font-family: "Segoe UI Symbol";
+}
+
+@supports (container-type: inline-size) {
+    .logo-container {
+        /* Move it down to your preferred desktop height */
+        top: 58%; 
+        
+        /* Apply modern scaling/centering */
+        width: var(--content-cluster-width);
+        max-width: var(--max-container-px);
+        margin-left: 0; 
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .description-text, .features-text, .credits-text, .warning-text {
+        width: 300%; 
+        margin-left: -100%;
+        margin-right: -100%;
+    }
 }
 
 .launchButton {
