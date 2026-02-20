@@ -152,6 +152,35 @@ html, body {
     box-shadow: 0px 0px 2.5cqw 0px rgba(153,104,0,1);
 }
 
+/* Hide Unicode by default (for Wii U) */
+.modern-check {
+    display: none;
+    color: #B26B00;
+    font-family: "Segoe UI Symbol", sans-serif;
+    font-weight: bold;
+    margin-right: 4px;
+}
+
+/* Show SVG by default (for Wii U) */
+.wiiu-check {
+    display: inline-block;
+    height: 1.1em;
+    width: auto;
+    vertical-align: -0.15em;
+    margin-right: 4px;
+    border: none;
+}
+
+/* Modern Browser Overwrite */
+@supports (container-type: inline-size) {
+    .modern-check {
+        display: inline-block !important;
+    }
+    .wiiu-check {
+        display: none !important;
+    }
+}
+
 @media (max-aspect-ratio: 13/16) {
     .logo-container {
         top: 45%; 
