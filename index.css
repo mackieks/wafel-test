@@ -3,11 +3,8 @@
 @import url(https://db.onlinewebfonts.com/c/150ed9b2a009a71d2d819b5561167302?family=Segoe+UI+Symbol); 
 
 :root {
-    /* Main scaling knob: Change this to scale the whole UI */
     --content-cluster-width: 50%; 
     --max-container-px: 900px;
-    
-    /* Logo size relative to the container */
     --logo-relative-scale: 70%; 
 }
 
@@ -18,6 +15,7 @@ html, body {
     height: 100%;
     background-color: #FFF7E8;
     overflow: hidden;
+    font-family: Arial, sans-serif; /* Wii U Fallback */
     font-family: "Neue Haas Grotesk Text Pro"; 
     text-align: center;
 }
@@ -41,7 +39,6 @@ html, body {
 }
 
 .logo-container {
-    /* Define this as a container so children can scale their font based on its width */
     container-type: inline-size;
     position: absolute;
     top: 58%;
@@ -49,113 +46,102 @@ html, body {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
+    /* Fallbacks */
+    width: 80%;
     width: var(--content-cluster-width);
+    max-width: 900px;
     max-width: var(--max-container-px);
     min-width: 280px;
     z-index: 20;
+    /* Flex logic */
+    display: block; 
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .responsive-logo {
+    width: 280px;
     width: var(--logo-relative-scale); 
     min-width: 280px;
     height: auto;
     display: inline-block;
     border: none;
+    /* Modern positioning */
+    margin-left: 0;
     margin-left: -2cqw;
-    margin-bottom: -4cqw; /* Gap scales with width */
+    margin-bottom: 10px;
+    margin-bottom: -4cqw;
+}
+
+.description-text, .features-text, .credits-text, .warning-text {
+    width: 90%;
+    width: 300%; 
+    margin-left: auto;
+    margin-right: auto;
+    /* Cascade handles the negative margins */
+    margin-left: -25%;
+    margin-right: -25%;
+    letter-spacing: -0.01em;
+    color: #444;
+    line-height: 1.4;
 }
 
 .description-text {
-
-    /* Increase width beyond 100% to exceed the parent container's bounds */
-    width: 300%; 
-    
-    /* Ensure it stays centered even though it's wider than its parent */
-    margin-left: -25%;
-    margin-right: -25%;
-
-    letter-spacing: -0.01em;
-
+    margin-bottom: 15px;
     margin-bottom: 1.5cqw;
-    /* Font size is now 4% of the container's width */
+    font-size: 18px;
     font-size: 4cqw; 
-    color: #444;
-    line-height: 1.4;
 }
 
 .features-text {
-
-    /* Increase width beyond 100% to exceed the parent container's bounds */
-    width: 300%; 
-    
-    /* Ensure it stays centered even though it's wider than its parent */
-    margin-left: -25%;
-    margin-right: -25%;
-
-    letter-spacing: -0.01em;
-
+    margin-top: 5px;
     margin-top: -8cqw;
+    margin-bottom: 10px;
     margin-bottom: 1cqw;
-    /* Font size is now 4% of the container's width */
+    font-size: 16px;
     font-size: 3.5cqw; 
-    color: #444;
-    line-height: 1.4;
 }
 
 .credits-text {
-
-    /* Increase width beyond 100% to exceed the parent container's bounds */
-    width: 300%; 
-    
-    /* Ensure it stays centered even though it's wider than its parent */
-    margin-left: -25%;
-    margin-right: -25%;
-
-    letter-spacing: -0.01em;
-
+    margin-top: 15px;
     margin-top: 3cqw;
+    margin-bottom: 10px;
     margin-bottom: 1cqw;
-    /* Font size is now 4% of the container's width */
+    font-size: 16px;
     font-size: 3.75cqw; 
-    color: #444;
-    line-height: 1.4;
 }
 
 .warning-text {
-
-    /* Increase width beyond 100% to exceed the parent container's bounds */
-    width: 300%; 
-    
-    /* Ensure it stays centered even though it's wider than its parent */
-    margin-left: -25%;
-    margin-right: -25%;
-
-    letter-spacing: -0.01em;
-
+    margin-top: 10px;
     margin-top: 1cqw;
+    margin-bottom: 10px;
     margin-bottom: 1cqw;
-    /* Font size is now 4% of the container's width */
+    font-size: 14px;
     font-size: 3cqw; 
     font-family: "Segoe UI Symbol";
-    color: #444;
-    line-height: 1.4;
 }
 
 .launchButton {
     border: none;
-    border-radius: 3.5cqw; /* Radius now scales too */
+    cursor: pointer;
     background-color: #FFBF00;
     color: white;
-    /* Button font size is now 10% of the container's width */
-    font-size: 7cqw; 
-    padding: 0.75cqw 3cqw 0.8cqw 3cqw;
-    font-family: "Neue Haas Grotesk Display Pro 65 Medium";;
     display: inline-block;
+    width: auto;
     width: fit-content;
     max-width: 100%; 
+    /* Scaling Props */
+    border-radius: 15px;
+    border-radius: 3.5cqw; 
+    font-size: 24px;
+    font-size: 7cqw; 
+    padding: 10px 30px;
+    padding: 0.75cqw 3cqw 0.8cqw 3cqw;
+    font-family: Arial, sans-serif;
+    font-family: "Neue Haas Grotesk Display Pro 65 Medium";
+    /* Shadows */
+    box-shadow: 0px 4px 10px rgba(153,104,0,1);
     box-shadow: 0px 0px 2.5cqw 0px rgba(153,104,0,1);
 }
 
@@ -164,10 +150,8 @@ html, body {
     font-size: 1em;
 }
 
-/* Target screens where height is significantly greater than width */
 @media (max-aspect-ratio: 13/16) {
     .logo-container {
-        /* Adjust from 55% to something higher, like 40% or 45% */
         top: 45%; 
     }
 }
