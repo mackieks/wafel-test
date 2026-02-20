@@ -44,7 +44,7 @@ html, body {
     
     /* 1. Wii U DEFAULT POSITION */
     /* This is the only 'top' the Wii U will ever see */
-    top: 45%; 
+    top: 35%; 
     left: 50%;
 
     /* Wii U Centering Fallback */
