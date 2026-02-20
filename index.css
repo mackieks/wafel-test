@@ -1,5 +1,14 @@
-@import url(https://db.onlinewebfonts.com/c/f21923cb0f60b46d41a66875255790b3?family=Neue+Haas+Grotesk+Display+Pro+65+Medium); 
-@import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro); 
+@import url(https://db.onlinewebfonts.com/c/f21923cb0f60b46d41a66875255790b3?family=Neue+Haas+Grotesk+Display+Pro+65+Medium);
+@import url(https://db.onlinewebfonts.com/c/6e47ef470dd19698c911332a9b4d1cf4?family=Neue+Haas+Grotesk+Text+Pro);
+
+:root {
+    /* Main scaling knob: Change this to scale the whole UI */
+    --content-cluster-width: 50%; 
+    --max-container-px: 900px;
+    
+    /* Logo size relative to the container */
+    --logo-relative-scale: 70%; 
+}
 
 html, body {
     margin: 0;
@@ -31,44 +40,102 @@ html, body {
 }
 
 .logo-container {
+    /* Define this as a container so children can scale their font based on its width */
+    container-type: inline-size;
     position: absolute;
-    top: 50%;
+    top: 55%;
     left: 50%;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     text-align: center;
-    width: 90%;
-    max-width: 800px;
+    width: var(--content-cluster-width);
+    max-width: var(--max-container-px);
+    min-width: 280px;
     z-index: 20;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .responsive-logo {
-    width: 50%; 
-    max-width: 600px; 
-    min-width: 200px;
+    width: var(--logo-relative-scale); 
+    min-width: 280px;
     height: auto;
     display: inline-block;
     border: none;
-    margin-bottom: 1.5em;
+    margin-left: -2cqw;
+    margin-bottom: -4cqw; /* Gap scales with width */
 }
 
 .description-text {
-    margin-bottom: 2em;
-    font-size: 1.1em;
+
+    /* Increase width beyond 100% to exceed the parent container's bounds */
+    width: 300%; 
+    
+    /* Ensure it stays centered even though it's wider than its parent */
+    margin-left: -25%;
+    margin-right: -25%;
+
+    letter-spacing: -0.01em;
+
+    margin-bottom: 1.5cqw;
+    /* Font size is now 4% of the container's width */
+    font-size: 4cqw; 
     color: #444;
+    line-height: 1.4;
+}
+
+.features-text {
+
+    /* Increase width beyond 100% to exceed the parent container's bounds */
+    width: 300%; 
+    
+    /* Ensure it stays centered even though it's wider than its parent */
+    margin-left: -25%;
+    margin-right: -25%;
+
+    letter-spacing: -0.01em;
+
+    margin-top: -8cqw;
+    margin-bottom: 1cqw;
+    /* Font size is now 4% of the container's width */
+    font-size: 3.5cqw; 
+    color: #444;
+    line-height: 1.4;
+}
+
+.credits-text {
+
+    /* Increase width beyond 100% to exceed the parent container's bounds */
+    width: 300%; 
+    
+    /* Ensure it stays centered even though it's wider than its parent */
+    margin-left: -25%;
+    margin-right: -25%;
+
+    letter-spacing: -0.01em;
+
+    margin-top: 3cqw;
+    margin-bottom: 1cqw;
+    /* Font size is now 4% of the container's width */
+    font-size: 3.75cqw; 
+    color: #444;
+    line-height: 1.4;
 }
 
 .launchButton {
     border: none;
-    border-radius: 0.5em;
+    border-radius: 3.5cqw; /* Radius now scales too */
     background-color: #FFBF00;
     color: white;
-    font-size: 2.5em;
-    padding: 0.15em 0.6em 0.2em;
+    /* Button font size is now 10% of the container's width */
+    font-size: 7cqw; 
+    padding: 0.75cqw 3cqw 0.8cqw 3cqw;
     font-family: "Neue Haas Grotesk Display Pro 65 Medium";;
     display: inline-block;
-    max-width: 90%;
-    box-shadow: 0px 0px 0.25em 0px rgba(153,104,0,1);
+    width: fit-content;
+    max-width: 100%; 
+    box-shadow: 0px 0px 2.5cqw 0px rgba(153,104,0,1);
 }
 
 .btn-warning {
