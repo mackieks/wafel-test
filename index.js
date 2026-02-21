@@ -1,4 +1,5 @@
-var exploit_page = "exploit.html"; // The page for Wii U users
+var launch_page = "exploit.html"; // The page for Wii U users
+var exploit_page = "exploit.html"; // The actual exploit page
 var offramp_page = "offramp.html"; // The page for PC/Other users
 
 function setWarning(warningText) {
@@ -14,12 +15,7 @@ function setWarning(warningText) {
 }
 
 function launchExploit() {
-    var paths = window.location.pathname.split("/");
-    if (paths[paths.length-1].substring(0, 6) == "index." || paths[paths.length-1] == "") {
-        paths.pop();
-    }
-    paths.push(exploit_page);
-    window.location.pathname = paths.join("/");
+    return navigateTo(exploit_page);
 }
 
 
@@ -40,7 +36,7 @@ function checkCompatibility() {
     // 1. Check if it's a Wii U
     if (userAgentDetails && userAgentDetails[1] === "Nintendo WiiU") {
         // It's a Wii U! Send them to the launcher/exploit prep page
-        return navigateTo(exploit_page);
+        return navigateTo(launch_page);
     } 
 
     // 2. If it's not a Wii U, or the UA is spoofed/unrecognizable
