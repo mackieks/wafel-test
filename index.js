@@ -1,4 +1,5 @@
-var hasWarning = false;
+var exploit_page = "launch.html"; // The page for Wii U users
+var offramp_page = "offramp.html"; // The page for PC/Other users
 
 function setWarning(warningText) {
     var btn = document.getElementById("launch-button");
@@ -21,36 +22,28 @@ function launchExploit() {
     window.location.pathname = paths.join("/");
 }
 
-// rebuild
+
+function navigateTo(targetPage) {
+    var paths = window.location.pathname.split("/");
+    // Remove filename if present (index.html or empty string from trailing slash)
+    if (paths[paths.length-1].indexOf(".") !== -1 || paths[paths.length-1] === "") {
+        paths.pop();
+    }
+    paths.push(targetPage);
+    window.location.pathname = paths.join("/");
+}
+
 function checkCompatibility() {
-    // If we've already shown a warning, the second click launches regardless
-    if (hasWarning) {
-        return launchExploit();
-    }
-
-    var userAgentDetails = navigator.userAgent.match(/\S+ \((.*?)\) .* (?:NintendoBrowser\/(\d+\.\d+\.\d+\.(\d+)\.(\w\w)))?/);
+    var ua = navigator.userAgent;
+    var userAgentDetails = ua.match(/\S+ \((.*?)\) .* (?:NintendoBrowser\/(\d+\.\d+\.\d+\.(\d+)\.(\w\w)))?/);
     
-    if (!userAgentDetails || userAgentDetails.length < 2) {
-        return setWarning("Are you on a Wii U? Click again to force launch");
-    }
+    // 1. Check if it's a Wii U
+    if (userAgentDetails && userAgentDetails[1] === "Nintendo WiiU") {
+        // It's a Wii U! Send them to the launcher/exploit prep page
+        return navigateTo(exploit_page);
+    } 
 
-    if (userAgentDetails[1] == "Nintendo WiiU") {
-        if (userAgentDetails.length != 5) {
-            return setWarning("Unknown firmware. Click again to force launch");
-        }
-        
-        var version = userAgentDetails[2].substring(0, 5);
-        if (version == "4.3.2" || version == "4.3.1" || version == "4.3.0") {
-            return launchExploit();
-        } else {
-            const commitVersion = parseInt(userAgentDetails[3]);
-            if (commitVersion < 11224) {
-                return setWarning("Firmware outdated. Click again to force launch");
-            } else {
-                return setWarning("Unsupported firmware. Click again to force launch");
-            }
-        }
-    } else {
-        return setWarning("Are you on a Wii U? Click again to force launch");
-    }
+    // 2. If it's not a Wii U, or the UA is spoofed/unrecognizable
+    // Send them to the PC instructions page
+    return navigateTo(offramp_page);
 }

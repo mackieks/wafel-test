@@ -80,6 +80,54 @@ html, body {
     margin-bottom: -4cqw;
 }
 
+.offramp-container {
+    container-type: inline-size;
+    position: absolute;
+    
+    /* 1. Wii U DEFAULT POSITION */
+    /* This is the only 'top' the Wii U will ever see */
+    top: 0%%; 
+    left: 50%;
+
+    /* Wii U Centering Fallback */
+    width: 80%;
+    margin-left: -40%; 
+
+    /* Standard modern props that Wii U safe-ignores or uses */
+    max-width: 900px;
+    min-width: 280px;
+    z-index: 20;
+    display: block; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.launch-container {
+    container-type: inline-size;
+    position: absolute;
+    
+    /* 1. Wii U DEFAULT POSITION */
+    /* This is the only 'top' the Wii U will ever see */
+    top: 0%%; 
+    left: 50%;
+
+    /* Wii U Centering Fallback */
+    width: 80%;
+    margin-left: -40%; 
+
+    /* Standard modern props that Wii U safe-ignores or uses */
+    max-width: 900px;
+    min-width: 280px;
+    z-index: 20;
+    display: block; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 /* Base Text: Contained 100% for Wii U */
 .description-text, .features-text, .credits-text, .warning-text {
     width: 100%;
@@ -113,12 +161,59 @@ html, body {
     margin-top: 3cqw;
 }
 
+.source-text {
+    font-size: 16px;
+    font-size: 3.75cqw;
+    margin-top: -15px;
+    margin-top: -3cqw;
+}
+
 .warning-text {
     font-size: 14px;
     font-size: 3cqw;
     margin-top: 10px;
     margin-top: 1cqw;
     font-family: "Segoe UI Symbol";
+}
+
+.offramp-text {
+    font-size: 16px;
+    font-size: 4cqw;
+    margin-top: -15px;
+    margin-top: -1.5cqw;
+}
+
+.launch-text {
+    font-size: 16px;
+    font-size: 3.75cqw;
+    margin-top: -15px;
+    margin-top: -1.5cqw;
+}
+
+/* Container for the credits section */
+.credits-grid {
+    width: 100%;
+    margin-top: 2cqw;
+    text-align: center;
+    /* Font size scales based on container width */
+    font-size: 4cqw; 
+}
+
+/* Three columns using inline-block for Wii U compatibility */
+.credits-column {
+    display: inline-block;
+    width: 32%; /* Slightly less than 33% to avoid sub-pixel wrapping issues */
+    vertical-align: top;
+    color: #444;
+    line-height: 1.4;
+}
+
+.credits-column strong {
+    color: #B26B00;
+    display: block;
+    margin-top: -20px;
+    margin-top: -3.5cqw;
+    margin-bottom: 0.5cqw;
 }
 
 @supports (container-type: inline-size) {
@@ -128,6 +223,32 @@ html, body {
         
         /* Apply modern scaling/centering */
         width: var(--content-cluster-width);
+        max-width: var(--max-container-px);
+        margin-left: 0; 
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .offramp-container {
+        /* Move it down to your preferred desktop height */
+        top: 50%; 
+        
+        /* Apply modern scaling/centering */
+        width: var(--content-cluster-width);
+        min-width: 400px;
+        max-width: var(--max-container-px);
+        margin-left: 0; 
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+    }
+
+    .launch-container {
+        /* Move it down to your preferred desktop height */
+        top: 50%; 
+        
+        /* Apply modern scaling/centering */
+        width: var(--content-cluster-width);
+        min-width: 400px;
         max-width: var(--max-container-px);
         margin-left: 0; 
         -webkit-transform: translate(-50%, -50%);
@@ -158,6 +279,8 @@ html, body {
     box-shadow: 0px 4px 10px rgba(153,104,0,1);
     box-shadow: 0px 0px 2.5cqw 0px rgba(153,104,0,1);
 }
+
+
 
 /* Hide Unicode by default (for Wii U) */
 .modern-check {
