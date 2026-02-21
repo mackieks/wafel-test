@@ -1,6 +1,6 @@
-var launch_page = "exploit.html"; // The page for Wii U users
-var exploit_page = "exploit.html"; // The actual exploit page
+var launch_page = "launch.html"; // The page for Wii U users
 var offramp_page = "offramp.html"; // The page for PC/Other users
+var exploit_page = "exploit.html"; // The actual exploit page
 
 function setWarning(warningText) {
     var btn = document.getElementById("launch-button");
