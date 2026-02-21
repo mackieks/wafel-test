@@ -110,7 +110,7 @@ html, body {
     
     /* 1. Wii U DEFAULT POSITION */
     /* This is the only 'top' the Wii U will ever see */
-    top: 0%%; 
+    top: 20%%; 
     left: 50%;
 
     /* Wii U Centering Fallback */
@@ -186,8 +186,8 @@ html, body {
 .launch-text {
     font-size: 16px;
     font-size: 3.75cqw;
-    margin-top: -15px;
-    margin-top: -1.5cqw;
+    margin-top: 15px;
+
 }
 
 /* Container for the credits section */
@@ -259,6 +259,10 @@ html, body {
         width: 300%; 
         margin-left: -100%;
         margin-right: -100%;
+    }
+
+    .launch-text {
+        margin-top: -1.5cqw;
     }
 }
 
