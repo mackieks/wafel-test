@@ -1,4 +1,4 @@
-var exploit_page = "launch.html"; // The page for Wii U users
+var exploit_page = "exploit.html"; // The page for Wii U users
 var offramp_page = "offramp.html"; // The page for PC/Other users
 
 function setWarning(warningText) {
